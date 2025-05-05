@@ -50,8 +50,11 @@ def upload_trade_to_google(timestamp, price, qty, side):
             print(f"📝 Attempting to insert row: {[timestamp, price, qty, side]}")
             sheet.append_row([timestamp, price, qty, side])
             print("✅ Successfully appended to Google Sheet.")
+        else:
+            print("⚠️ Sheet object is None — skipping upload.")
     except Exception as e:
         print("❌ Failed to upload to Google Sheets:", e)
+
 
 
 # === WebSocket Message Handler ===
