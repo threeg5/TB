@@ -2,3 +2,4 @@ websocket-client
 gspread
 oauth2client
 pandas
+dash
