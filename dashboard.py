@@ -20,7 +20,7 @@ app.layout = html.Div([
 )
 def update_table(n):
     try:
-        df = pd.read_csv("btc_trades.csv")
+        df = pd.read_csv("btc_trades.csv").tail(50).iloc[::-1]
         rows = []
         for i in range(len(df) - 1, max(len(df) - 21, -1), -1):
             row = df.iloc[i]
@@ -41,4 +41,8 @@ def update_table(n):
 
 
 if __name__ == '__main__':
-    app.run(debug=True)
+    import os
+
+port = int(os.environ.get("PORT", 8050))  # 8050 is fallback for local use
+app.run_server(host="0.0.0.0", port=port, debug=True)
+
